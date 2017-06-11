@@ -20,7 +20,7 @@ daHead.style.padding= ".005% 4%";
 var daMain = document.createElement('main');
 daMain.style.padding= "0% 4% 5% 4%";
 var daFoot = document.createElement('footer');
-daFoot.style.padding= "6% 4%";
+daFoot.style.padding= "4% 4%";
 daFoot.style.backgroundColor= "rgb(199,222,239)";
 daFoot.style.borderRadius= "5px";
 
@@ -51,6 +51,9 @@ for (var i in formData){
     //create select element
     var daSelect = document.createElement('select');
     daSelect.style.margin= "2% 0%";
+    daSelect.style.width= "95%";
+    daSelect.style.boxShadow= "0px";
+    daSelect.style.borderRadius= "0px";
     //for loop for options in formdata
     for (var j in formData[i].options){
       //create option element, add label from formdata to textContent attribute,
@@ -70,11 +73,27 @@ for (var i in formData){
   else if(formData[i].type=="textarea"){
     //create textarea, add row and col attribute, and attatch textarea to div
     var daText = document.createElement('textarea');
-    daText.setAttribute("value", formData[i].label);
+    daText.setAttribute("plaeceholder", formData[i].label);
     daText.setAttribute("rows", 5);
     daText.setAttribute("cols", 55);
     daText.style.margin= "2% 0%";
     daDiv.appendChild(daText);
+
+    //Create span element for icon in formdata, add class Icon to div,
+    //and attatch Icon Span to parent div
+    var daSpan = document.createElement('span');
+    daSpan.classList = "Icon";
+    daDiv.appendChild(daSpan);
+
+    //Create icon element for icon in formdata, add class Icon to icon from formdata,
+    //and attatch Icon to span
+    var daIcon = document.createElement('i');
+    daIcon.classList = "fa " + formData[i].icon;
+    daSpan.appendChild(daIcon);
+    daIcon.style.color= "rgb(160,165,167)";
+    daIcon.style.position= "absolute";
+    daIcon.style.margin= ".9% 0% 1%";
+    daIcon.style.left= "36%";
   }
 
   //conditional for the rest of the inputs and add css
@@ -92,8 +111,8 @@ for (var i in formData){
     daSpan.appendChild(daIcon);
     daIcon.style.color= "rgb(160,165,167)";
     daIcon.style.position= "absolute";
-    daIcon.style.margin= "1.5% 0% 2.5% 0%";
-    daIcon.style.left= "22%";
+    daIcon.style.margin= ".9% 0% 1%";
+    daIcon.style.left= "36%";
 
     //Create input element, set type attribute from type in formdata to input,
     //and set value attribute from value in formdata to input,
@@ -120,8 +139,8 @@ for (var i in formData){
 var daButton = document.createElement('button');
 daButton.textContent = "Submit Form";
 daFoot.appendChild(daButton);
-
-//CSS---------------------------------------------------------------------------
-
-
-//newTodoLi.style.padding='5%';
+daButton.style.height= "30px";
+daButton.style.color= "white";
+daButton.style.backgroundColor= "rgb(56,139,199)";
+daButton.style.borderRadius= "3px";
+daButton.style.border= "0px";
